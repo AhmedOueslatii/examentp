@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}etudiants List{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>section</th>
+            <th><a href="{{  path('app_etudiant_ajout')}}" > Ajout</a></th>
+            <th>Edit </th>
+            <th>delete</th>
+        </tr>
+        {% for etudiant in etudiants %}
+            <tr>
+                <td>{{ etudiant.Nom }}</td>
+                <td>{{ etudiant.Prenom }}</td>
+                <td> {{ etudiant.Section }}</td>
+                <td></td>
+                <td><a href="{{ path('app_etudiant_edit',{ id:etudiant.id })}}">Edit</a></td>
+                <td><a href="{{ path('app_etudiant_delete', {id: etudiant.id}) }}">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
