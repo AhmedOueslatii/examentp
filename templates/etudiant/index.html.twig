@@ -13,6 +13,11 @@
             <th>delete</th>
         </tr>
         {% for etudiant in etudiants %}
+            {%if loop.index % 2 ==1 %}
+                <tr  class="table-primary" onclick="change(this,'table-primary')">
+            {%else%}
+                <tr  class="table-secondary" onclick="change(this,'table-secondary')">
+            {%endif%}
             <tr>
                 <td>{{ etudiant.Nom }}</td>
                 <td>{{ etudiant.Prenom }}</td>
@@ -20,6 +25,7 @@
                 <td></td>
                 <td><a href="{{ path('app_etudiant_edit',{ id:etudiant.id })}}">Edit</a></td>
                 <td><a href="{{ path('app_etudiant_delete', {id: etudiant.id}) }}">Delete</a></td>
+
             </tr>
         {% endfor %}
     </table>
